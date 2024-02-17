@@ -2,7 +2,9 @@
 
 ## Moon Portfolio
 
-A crypto portfolio tracker and projection creator. This is a NextJS, Typescript, Tailwindcss and Strapi app.
+A crypto portfolio tracker and projection creator. This is a NextJS 14, Typescript, Tailwindcss, NodeJS & Postgres app.
+
+Figma design file: https://www.figma.com/file/0ISvPMbRh7MEd0Okof6XCr/Moon-Portfolio?type=design&node-id=0-1&mode=design&t=FuWybXNaPH401UPY-0
 
 First, run the development server:
 

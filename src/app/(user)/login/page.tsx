@@ -3,18 +3,18 @@
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import axios from 'axios';
-// import { setToken } from '@/common/lib/auth';
+// import { setToken } from '@/src/common/lib/auth';
 import { useRouter } from 'next/navigation';
 
-import { Button } from '@/components/buttons';
+import { Button } from '@/src/components/buttons';
 import {
   SIGN_IN,
-  CONTINUE_GOOGLE,
+  // CONTINUE_GOOGLE,
   FORGOT_PASS,
-  OR_SIGN_GOOGLE,
-} from '@/common/constants/copy';
+  // OR_SIGN_GOOGLE,
+} from '@/src/common/constants/copy';
 import { Poppins } from 'next/font/google';
-// import useGoogleAuth from '@/common/hooks/useGoogleAuth';
+// import useGoogleAuth from '@/src/common/hooks/useGoogleAuth';
 
 type LoginInput = {
   identifier: string;
@@ -28,7 +28,7 @@ const Login = (): JSX.Element => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    setError,
+    // setError,
   } = useForm<LoginInput>();
   const router = useRouter();
   // const { login, loading } = useGoogleAuth();
@@ -39,9 +39,7 @@ const Login = (): JSX.Element => {
     //     `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
     //     data
     //   );
-
     //   setToken(authData);
-
     //   router.replace('/portfolio');
     // } catch (error: any) {
     //   setError('password', { message: 'Invalid credentials' });
@@ -93,7 +91,8 @@ const Login = (): JSX.Element => {
       >
         {FORGOT_PASS}
       </Link>
-      <p className="text-yellow mt-10">{OR_SIGN_GOOGLE}</p>
+      <br />
+      {/* <p className="text-yellow mt-10">{OR_SIGN_GOOGLE}</p> */}
 
       {/* <Button
         gray="555"

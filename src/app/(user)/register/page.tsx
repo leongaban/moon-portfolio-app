@@ -14,8 +14,8 @@ import {
   SIGN_UP,
   SIGN_IN_EMAIL,
   CONTINUE_GOOGLE,
-} from '@/common/constants/copy';
-import { Button } from '@/components/buttons';
+} from '@/src/common/constants/copy';
+import { Button } from '@/src/components/buttons';
 // import useGoogleAuth from '@/common/hooks/useGoogleAuth';
 
 interface pageProps {}
@@ -123,7 +123,7 @@ const Register: FC<pageProps> = ({}) => {
         loading={isSubmitting}
         disabled={isSubmitting}
       />
-      <p className="text-yellow">Or sign in with</p>
+      {/* <p className="text-yellow">Or sign in with</p> */}
       {/* <Button
         gray="555"
         text={CONTINUE_GOOGLE}
