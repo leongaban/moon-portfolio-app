@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './reset.css';
+@import './auth.css';
+@import './buttons.css';
+@import './pages.css';
+@import './portfolio.css';
+@import './search.css';

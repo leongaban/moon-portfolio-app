@@ -1,0 +1,17 @@
+.privacy-container {
+  width: 100%;
+  color: #fff;
+}
+
+.privacy-container a {
+  color: var(--pink);
+}
+
+.privacy-container a:hover {
+  color: var(--pink);
+  filter: brightness(125%) saturate(100%);
+}
+
+.privacy-container a:visited {
+  color: var(--pink);
+}

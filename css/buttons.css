@@ -1,0 +1,37 @@
+/* Button */
+.bg-gray-333 {
+  background-color: #333;
+}
+
+.bg-gray-555 {
+  background-color: #555;
+}
+
+button.btn {
+  @apply font-bold py-4 px-4 rounded-lg border-none;
+  cursor: pointer;
+}
+
+button.btn.gray-333 {
+  @apply bg-gray-333 text-yellow;
+}
+
+button.btn.gray-333:hover {
+  @apply bg-gray-555 brightness-150;
+}
+
+button.btn.gray-333:active {
+  @apply bg-gray-333 brightness-50 text-white relative;
+}
+
+button.btn.gray-555 {
+  @apply bg-gray-555 text-yellow;
+}
+
+button.btn.gray-555:hover {
+  @apply bg-gray-555 brightness-150;
+}
+
+button.btn.gray-555:active {
+  @apply bg-gray-333 brightness-50 text-white relative;
+}

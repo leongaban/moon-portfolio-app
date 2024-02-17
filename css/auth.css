@@ -1,0 +1,40 @@
+.bg-gradient {
+  background-image: linear-gradient(
+    135deg,
+    hsl(25deg 29% 12%) 0%,
+    hsl(25deg 32% 11%) 21%,
+    hsl(27deg 37% 9%) 30%,
+    hsl(29deg 47% 8%) 39%,
+    hsl(30deg 62% 7%) 46%,
+    hsl(30deg 85% 6%) 54%,
+    hsl(25deg 100% 5%) 61%,
+    hsl(16deg 100% 4%) 69%,
+    hsl(3deg 100% 4%) 79%,
+    hsl(0deg 0% 0%) 100%
+  );
+}
+
+.text-transparent {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.logo-text,
+.logo-text a {
+  @apply bg-gradient-to-r from-yellow via-pink to-pink bg-clip-text text-transparent drop-shadow-md;
+  text-decoration: none;
+}
+
+.user-auth-forms {
+  overflow: auto;
+}
+
+.user-auth-forms,
+.input-fields {
+  width: 100%;
+}
+
+.user-auth-forms input {
+  @apply font-bold py-4 px-4 rounded-lg border-none;
+  font-size: inherit;
+  width: 100%;
+}

@@ -1,0 +1,53 @@
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --brown: #261c15;
+  --yellow: #eee0cb;
+  --green: #4e6e58;
+  --pink: #e56399;
+  --red: ##d10000;
+  --gray-light: #666666;
+  --gray-medium: #555555;
+  --gray-dark: #333333;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/*
+Correct padding adding to the content size
+*/
+
+/* override browser default */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+body {
+  height: 100vh;
+  color: rgb(var(--yellow));
+  background-color: var(--brown);
+}
