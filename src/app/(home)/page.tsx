@@ -11,9 +11,9 @@ import {
   TAG_LINE,
   SIGN_UP_EMAIL,
   CONTINUE_GOOGLE,
-} from '@/common/constants/copy';
-import { Button } from '@/components/buttons';
-import Logo from '@/components/logo';
+} from '@/src/common/constants/copy';
+import { Button } from '@/src/components/buttons';
+import Logo from '@/src/components/logo';
 // import Loading from '@/components/loading';
 // import useGoogleAuth from '@/common/hooks/useGoogleAuth';
 // import axios from 'axios';
