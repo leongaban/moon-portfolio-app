@@ -1,12 +1,12 @@
-'use client';
-import { FC, ReactNode } from 'react';
+'use client'
+import { FC, ReactNode } from 'react'
 
 interface layoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Layout: FC<layoutProps> = ({ children }) => {
-  return <main>{children}</main>;
-};
+  return <main>{children}</main>
+}
 
-export default Layout;
+export default Layout

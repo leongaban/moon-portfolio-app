@@ -258,4 +258,4 @@ export const pythCoins = [
     name: 'Zebec Protocol',
     key: '3bNH7uDsap5nzwhCvv98i7VshjMagtx1NXTDBLbPYD66',
   },
-];
+]

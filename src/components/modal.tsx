@@ -1,18 +1,18 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from 'react'
 
 interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
+  isOpen: boolean
+  onClose: () => void
+  children: ReactNode
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const modalClass = isOpen
     ? 'fixed inset-0 flex items-center justify-center z-50'
-    : 'hidden';
+    : 'hidden'
   const overlayClass = isOpen
     ? 'modal-overlay absolute inset-0 bg-gray-900 opacity-50'
-    : 'hidden';
+    : 'hidden'
 
   return (
     <div className={modalClass}>
@@ -21,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

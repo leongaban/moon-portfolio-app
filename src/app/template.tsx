@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 // import Hotjar from '@hotjar/browser';
 
@@ -11,5 +11,5 @@ export default function Template({ children }: { children: React.ReactNode }) {
   //   Hotjar.init(siteId, hotjarVersion);
   // }, []);
 
-  return children;
+  return children
 }

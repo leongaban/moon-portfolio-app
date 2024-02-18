@@ -3,33 +3,33 @@
   <Alert type={'success'} msg={'You are going to make it!'} />
 */
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 interface AlertProps {
-  type: string;
-  msg: string;
+  type: string
+  msg: string
 }
 
 export default function Alert({ type, msg }: AlertProps) {
-  const [fill, setFill] = useState('black');
-  const [brighness, setBrightness] = useState('');
+  const [fill, setFill] = useState('black')
+  const [brighness, setBrightness] = useState('')
 
   const defaultClasses =
-    'w-full border text-white px-4 py-3 rounded cursor-pointer relative';
-  const colorClass = type === 'error' ? 'bg-red' : 'bg-green';
-  let finalColorClass = defaultClasses.concat(` ${colorClass}`);
+    'w-full border text-white px-4 py-3 rounded cursor-pointer relative'
+  const colorClass = type === 'error' ? 'bg-red' : 'bg-green'
+  let finalColorClass = defaultClasses.concat(` ${colorClass}`)
 
   return (
     <div
       className={`${finalColorClass} ${brighness}`}
       role="alert"
       onMouseEnter={() => {
-        setBrightness('brightness-150');
-        setFill('white');
+        setBrightness('brightness-150')
+        setFill('white')
       }}
       onMouseLeave={() => {
-        setBrightness('');
-        setFill('black');
+        setBrightness('')
+        setFill('black')
       }}
     >
       <span className="block sm:inline">{msg}</span>
@@ -48,5 +48,5 @@ export default function Alert({ type, msg }: AlertProps) {
         </svg>
       </span>
     </div>
-  );
+  )
 }

@@ -28,5 +28,5 @@ export default function SearchIcon() {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

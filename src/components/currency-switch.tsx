@@ -10,5 +10,5 @@ export default function CurrencySwitch({}: CurrencySwitchProps) {
       <div className="currency-btn">ETH</div> <span>|</span>
       <div className="currency-btn">SOL</div>
     </div>
-  );
+  )
 }

@@ -15,6 +15,7 @@ import {
   SIGN_IN_EMAIL,
   CONTINUE_GOOGLE,
 } from '@/src/common/constants/copy'
+import { methodPost } from '@/src/common/constants/api'
 import { Button } from '@/src/components/buttons'
 // import useGoogleAuth from '@/common/hooks/useGoogleAuth';
 
@@ -50,8 +51,7 @@ const Register: FC<pageProps> = ({}) => {
       const { name, email, password } = data
 
       fetch('http://localhost:4000/register', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
+        ...methodPost,
         body: JSON.stringify({ name, email, password }),
       })
         .then(res => res.json())
@@ -61,6 +61,7 @@ const Register: FC<pageProps> = ({}) => {
           }
           return data
         })
+
       // const { data: authData } = await axios.post(
       //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local/register`,
       //   {

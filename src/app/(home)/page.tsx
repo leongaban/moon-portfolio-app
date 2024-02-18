@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { FC, useEffect, useState } from 'react';
-import { Poppins } from 'next/font/google';
+import { FC, useEffect, useState } from 'react'
+import { Poppins } from 'next/font/google'
 // import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import Link from 'next/link'
 
 // import useAuth from '@/common/hooks/useAuth';
 import {
@@ -11,9 +11,9 @@ import {
   TAG_LINE,
   SIGN_UP_EMAIL,
   CONTINUE_GOOGLE,
-} from '@/src/common/constants/copy';
-import { Button } from '@/src/components/buttons';
-import Logo from '@/src/components/logo';
+} from '@/src/common/constants/copy'
+import { Button } from '@/src/components/buttons'
+import Logo from '@/src/components/logo'
 // import Loading from '@/components/loading';
 // import useGoogleAuth from '@/common/hooks/useGoogleAuth';
 // import axios from 'axios';
@@ -21,7 +21,7 @@ import Logo from '@/src/components/logo';
 
 interface pageProps {}
 
-const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] });
+const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] })
 
 const Page: FC<pageProps> = ({}) => {
   // const { loading, isAuthenticated } = useAuth();
@@ -81,7 +81,7 @@ const Page: FC<pageProps> = ({}) => {
         </div>
       </main>
     </main>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

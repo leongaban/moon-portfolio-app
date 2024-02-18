@@ -1,55 +1,55 @@
-import Router from 'next/router';
-import Cookies from 'js-cookie';
-import { fetcher } from './api';
+import Router from 'next/router'
+import Cookies from 'js-cookie'
+import { fetcher } from './api'
 
 interface User {
-  id: number;
-  username: string;
-  email: string;
-  provider: string;
-  confirmed: boolean;
-  blocked: boolean;
+  id: number
+  username: string
+  email: string
+  provider: string
+  confirmed: boolean
+  blocked: boolean
 }
 
 interface TokenData {
-  user: User;
-  jwt: string;
+  user: User
+  jwt: string
 }
 
 interface GoogleTokenData {
-  user: User;
-  token: string;
+  user: User
+  token: string
 }
 
 export const setToken = (data: TokenData) => {
   if (typeof window === 'undefined') {
-    return;
+    return
   }
-  Cookies.set('id', `${data.user.id}`);
-  Cookies.set('username', data.user.username);
-  Cookies.set('token', data.jwt);
-};
+  Cookies.set('id', `${data.user.id}`)
+  Cookies.set('username', data.user.username)
+  Cookies.set('token', data.jwt)
+}
 
 export const setGoogleToken = (data: GoogleTokenData) => {
   if (typeof window === 'undefined') {
-    return;
+    return
   }
-  Cookies.set('id', `${data.user.id}`);
-  Cookies.set('username', data.user.username);
-  Cookies.set('token', data.token);
-};
+  Cookies.set('id', `${data.user.id}`)
+  Cookies.set('username', data.user.username)
+  Cookies.set('token', data.token)
+}
 
 export const unsetToken = () => {
   if (typeof window === 'undefined') {
-    return;
+    return
   }
-  Cookies.remove('id');
-  Cookies.remove('token');
-  Cookies.remove('username');
-};
+  Cookies.remove('id')
+  Cookies.remove('token')
+  Cookies.remove('username')
+}
 
 export const getUserFromLocalCookie = () => {
-  const jwt = getTokenFromLocalCookie();
+  const jwt = getTokenFromLocalCookie()
   if (jwt) {
     return fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
       headers: {
@@ -58,16 +58,16 @@ export const getUserFromLocalCookie = () => {
       },
     })
       .then(data => {
-        return data.username;
+        return data.username
       })
-      .catch(error => console.error(error));
+      .catch(error => console.error(error))
   } else {
-    return;
+    return
   }
-};
+}
 
 export const getIdFromLocalCookie = () => {
-  const jwt = getTokenFromLocalCookie();
+  const jwt = getTokenFromLocalCookie()
   if (jwt) {
     return fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
       headers: {
@@ -75,41 +75,41 @@ export const getIdFromLocalCookie = () => {
         Authorization: `Bearer ${jwt}`,
       },
     }).then(data => {
-      return data.id;
-    });
+      return data.id
+    })
   } else {
-    return;
+    return
   }
-};
+}
 
 export const getTokenFromLocalCookie = () => {
-  return Cookies.get('token');
-};
+  return Cookies.get('token')
+}
 
 export const getTokenFromServerCookie = (req: any) => {
   if (!req.headers.cookie || '') {
-    return undefined;
+    return undefined
   }
   const jwtCookie = req.headers.cookie
     .split(';')
-    .find((c: string) => c.trim().startsWith('jwt='));
+    .find((c: string) => c.trim().startsWith('jwt='))
   if (!jwtCookie) {
-    return undefined;
+    return undefined
   }
-  const jwt = jwtCookie.split('=')[1];
-  return jwt;
-};
+  const jwt = jwtCookie.split('=')[1]
+  return jwt
+}
 
 export const getIdFromServerCookie = (req: any) => {
   if (!req.headers.cookie || '') {
-    return undefined;
+    return undefined
   }
   const idCookie = req.headers.cookie
     .split(';')
-    .find((c: string) => c.trim().startsWith('id='));
+    .find((c: string) => c.trim().startsWith('id='))
   if (!idCookie) {
-    return undefined;
+    return undefined
   }
-  const id = idCookie.split('=')[1];
-  return id;
-};
+  const id = idCookie.split('=')[1]
+  return id
+}

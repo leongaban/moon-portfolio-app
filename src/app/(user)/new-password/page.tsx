@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import axios from 'axios';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useSearchParams } from 'next/navigation';
+import axios from 'axios'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useSearchParams } from 'next/navigation'
 
-import { Button } from '@/src/components/buttons';
+import { Button } from '@/src/components/buttons'
 import {
   SUBMIT,
   RESET_PASS,
   ENTER_NEW_PASS,
   SIGN_IN,
-} from '@/src/common/constants/copy';
-import { useState } from 'react';
-import Link from 'next/link';
+} from '@/src/common/constants/copy'
+import { useState } from 'react'
+import Link from 'next/link'
 
 type NewPasswordInput = {
-  code: string;
-  password: string;
-  passwordConfirmation: string;
-};
+  code: string
+  password: string
+  passwordConfirmation: string
+}
 
 const NewPassword = (): JSX.Element => {
   const {
@@ -26,10 +26,10 @@ const NewPassword = (): JSX.Element => {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<NewPasswordInput>();
+  } = useForm<NewPasswordInput>()
 
-  const searchParams = useSearchParams();
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const searchParams = useSearchParams()
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const onSubmit: SubmitHandler<NewPasswordInput> = async data => {
     try {
@@ -39,14 +39,14 @@ const NewPassword = (): JSX.Element => {
           ...data,
           code: searchParams?.get('confirmation'),
         }
-      );
+      )
 
-      setSuccessMessage('Your password has been changed');
+      setSuccessMessage('Your password has been changed')
     } catch (error: any) {
-      setSuccessMessage(null);
-      setError('passwordConfirmation', { message: 'This link has expired' });
+      setSuccessMessage(null)
+      setError('passwordConfirmation', { message: 'This link has expired' })
     }
-  };
+  }
 
   return (
     <div className="user-auth-forms">
@@ -94,7 +94,7 @@ const NewPassword = (): JSX.Element => {
         </Link>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default NewPassword;
+export default NewPassword

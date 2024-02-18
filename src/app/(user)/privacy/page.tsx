@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
 interface pageProps {}
 
@@ -200,7 +200,7 @@ const Privacy: FC<pageProps> = ({}) => {
         <a href="mailto:hello@moonportfolio.com">hello@moonportfolio.com</a>.
       </p>
     </main>
-  );
-};
+  )
+}
 
-export default Privacy;
+export default Privacy

@@ -1,5 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance } from 'axios'
 
 export interface AxiosContextType {
-  axiosInstance: AxiosInstance;
+  axiosInstance: AxiosInstance
 }

@@ -1,7 +1,7 @@
 interface ToggleProps {
-  type: string;
+  type: string
 }
 
 export default function Toggle({ type }: ToggleProps) {
-  return <div>{type}</div>;
+  return <div>{type}</div>
 }

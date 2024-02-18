@@ -1,26 +1,26 @@
 // ? User routes layout template
-'use client';
+'use client'
 
-import { FC, ReactNode, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
+import { FC, ReactNode, useEffect } from 'react'
+import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 // import useAuth from '@/src/common/hooks/useAuth';
 
-import { MOON_PORTFOLIO } from '@/src/common/constants/copy';
-import Loading from '@/src/components/loading';
-import { containsPrivacy } from '@/src/common/utils/formatters';
+import { MOON_PORTFOLIO } from '@/src/common/constants/copy'
+import Loading from '@/src/components/loading'
+import { containsPrivacy } from '@/src/common/utils/formatters'
 // import Alert from '@/src/components/alert'; // TODO handle auth alerts
 
 interface layoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Layout: FC<layoutProps> = ({ children }) => {
   // const { isAuthenticated, loading } = useAuth();
-  const router = useRouter();
-  const pathName = usePathname();
-  const isPrivacy = containsPrivacy(pathName);
-  const containerClass = isPrivacy ? '' : 'lg:max-w-[360px] max-w-[400px]';
+  const router = useRouter()
+  const pathName = usePathname()
+  const isPrivacy = containsPrivacy(pathName)
+  const containerClass = isPrivacy ? '' : 'lg:max-w-[360px] max-w-[400px]'
 
   // useEffect(() => {
   //   if (isAuthenticated && !loading) router.push('/');
@@ -46,7 +46,7 @@ const Layout: FC<layoutProps> = ({ children }) => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

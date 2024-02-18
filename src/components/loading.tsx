@@ -50,5 +50,5 @@ export default function Loading({
       </svg>
       {withLabel && <p className="text-[#EEE0CB]">{label}</p>}
     </div>
-  );
+  )
 }

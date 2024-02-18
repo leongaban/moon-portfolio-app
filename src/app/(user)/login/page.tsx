@@ -13,6 +13,7 @@ import {
   // CONTINUE_GOOGLE,
   // OR_SIGN_GOOGLE,
 } from '@/src/common/constants/copy'
+import { methodPost } from '@/src/common/constants/api'
 import { Poppins } from 'next/font/google'
 // import useGoogleAuth from '@/src/common/hooks/useGoogleAuth'
 
@@ -39,8 +40,7 @@ const Login = (): JSX.Element => {
       const { identifier: email, password } = data
 
       fetch('http://localhost:4000/signin', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
+        ...methodPost,
         body: JSON.stringify({ email, password }),
       })
         .then(res => res.json())

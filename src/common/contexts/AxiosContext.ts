@@ -1,4 +1,4 @@
-import { createContext } from 'react';
-import { AxiosContextType } from './../types/AxiosContextType';
+import { createContext } from 'react'
+import { AxiosContextType } from './../types/AxiosContextType'
 
-export const AxiosContext = createContext<AxiosContextType | null>(null);
+export const AxiosContext = createContext<AxiosContextType | null>(null)

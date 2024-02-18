@@ -1,5 +1,5 @@
 interface LogoProps {
-  large?: boolean;
+  large?: boolean
 }
 
 export default function Logo({ large }: LogoProps) {
@@ -63,7 +63,7 @@ export default function Logo({ large }: LogoProps) {
           </linearGradient>
         </defs>
       </svg>
-    );
+    )
   }
 
   return (
@@ -124,5 +124,5 @@ export default function Logo({ large }: LogoProps) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }

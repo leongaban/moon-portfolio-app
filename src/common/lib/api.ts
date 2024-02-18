@@ -1,10 +1,10 @@
 export async function fetcher(url: string, options = {}) {
-  let response;
+  let response
   if (!options) {
-    response = await fetch(url);
+    response = await fetch(url)
   } else {
-    response = await fetch(url, options);
+    response = await fetch(url, options)
   }
-  const data = await response.json();
-  return data;
+  const data = await response.json()
+  return data
 }
