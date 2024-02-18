@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import axios from 'axios';
-import { FC } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import axios from 'axios'
+import { FC } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 
 // import { setToken } from '@/common/lib/auth';
 import {
@@ -14,18 +14,18 @@ import {
   SIGN_UP,
   SIGN_IN_EMAIL,
   CONTINUE_GOOGLE,
-} from '@/src/common/constants/copy';
-import { Button } from '@/src/components/buttons';
+} from '@/src/common/constants/copy'
+import { Button } from '@/src/components/buttons'
 // import useGoogleAuth from '@/common/hooks/useGoogleAuth';
 
 interface pageProps {}
 
 type RegisterInput = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+  name: string
+  email: string
+  password: string
+  confirmPassword: string
+}
 
 const Register: FC<pageProps> = ({}) => {
   const {
@@ -33,19 +33,34 @@ const Register: FC<pageProps> = ({}) => {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<RegisterInput>();
-  const router = useRouter();
+  } = useForm<RegisterInput>()
+  const router = useRouter()
   // const { login, loading } = useGoogleAuth();
 
   const onSubmit: SubmitHandler<RegisterInput> = async data => {
     if (data.password !== data.confirmPassword) {
       setError('confirmPassword', {
         message: 'Password does not match',
-      });
-      return;
+      })
+      return
     }
 
     try {
+      console.log('Register data:', data)
+      const { name, email, password } = data
+
+      fetch('http://localhost:4000/register', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.message === 'Register successful') {
+            console.log('REGISTER SUCCES! Route to Portfolio.')
+          }
+          return data
+        })
       // const { data: authData } = await axios.post(
       //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local/register`,
       //   {
@@ -58,13 +73,14 @@ const Register: FC<pageProps> = ({}) => {
 
       // setToken(authData);
 
-      router.replace('/portfolio');
+      // ? if auth route to portfolio
+      // router.replace('/portfolio')
     } catch (error: any) {
       setError('password', {
         message: error?.response?.data?.error?.message,
-      });
+      })
     }
-  };
+  }
 
   return (
     <form className="user-auth-forms" onSubmit={handleSubmit(onSubmit)}>
@@ -138,7 +154,7 @@ const Register: FC<pageProps> = ({}) => {
         </Link>
       </p>
     </form>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
