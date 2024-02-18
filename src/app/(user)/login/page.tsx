@@ -1,50 +1,51 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import axios from 'axios';
-// import { setToken } from '@/src/common/lib/auth';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import axios from 'axios'
+// import { setToken } from '@/src/common/lib/auth'
+import { useRouter } from 'next/navigation'
 
-import { Button } from '@/src/components/buttons';
+import { Button } from '@/src/components/buttons'
 import {
   SIGN_IN,
-  // CONTINUE_GOOGLE,
   FORGOT_PASS,
+  // CONTINUE_GOOGLE,
   // OR_SIGN_GOOGLE,
-} from '@/src/common/constants/copy';
-import { Poppins } from 'next/font/google';
-// import useGoogleAuth from '@/src/common/hooks/useGoogleAuth';
+} from '@/src/common/constants/copy'
+import { Poppins } from 'next/font/google'
+// import useGoogleAuth from '@/src/common/hooks/useGoogleAuth'
 
 type LoginInput = {
-  identifier: string;
-  password: string;
-};
+  identifier: string
+  password: string
+}
 
-const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] });
+const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] })
 
 const Login = (): JSX.Element => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    // setError,
-  } = useForm<LoginInput>();
-  const router = useRouter();
+    setError,
+  } = useForm<LoginInput>()
+  const router = useRouter()
   // const { login, loading } = useGoogleAuth();
 
   const onSubmit: SubmitHandler<LoginInput> = async data => {
-    // try {
-    //   const { data: authData } = await axios.post(
-    //     `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
-    //     data
-    //   );
-    //   setToken(authData);
-    //   router.replace('/portfolio');
-    // } catch (error: any) {
-    //   setError('password', { message: 'Invalid credentials' });
-    // }
-  };
+    try {
+      console.log('Submit data:', data)
+      // const { data: authData } = await axios.post(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
+      //   data
+      // )
+      // setToken(authData);
+      router.replace('/portfolio')
+    } catch (error: any) {
+      setError('password', { message: 'Invalid credentials' })
+    }
+  }
 
   return (
     <div className="user-auth-forms">
@@ -108,7 +109,7 @@ const Login = (): JSX.Element => {
         </Link>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

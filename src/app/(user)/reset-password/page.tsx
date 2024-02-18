@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import axios from 'axios';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import axios from 'axios'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Button } from '@/src/components/buttons';
+import { Button } from '@/src/components/buttons'
 import {
   SUBMIT,
   RESET_PASS,
   RESET_YOUR_PASS,
-} from '@/src/common/constants/copy';
-import { useState } from 'react';
+} from '@/src/common/constants/copy'
+import { useState } from 'react'
 
 type ResetPasswordInput = {
-  email: string;
-};
+  email: string
+}
 
 const ResetPassword = (): JSX.Element => {
   const {
@@ -21,23 +21,23 @@ const ResetPassword = (): JSX.Element => {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<ResetPasswordInput>();
+  } = useForm<ResetPasswordInput>()
 
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const onSubmit: SubmitHandler<ResetPasswordInput> = async data => {
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password`,
         data
-      );
+      )
 
-      setSuccessMessage('Reset password link has been sent to your email');
+      setSuccessMessage('Reset password link has been sent to your email')
     } catch (error: any) {
-      setSuccessMessage(null);
-      setError('email', { message: 'Invalid email' });
+      setSuccessMessage(null)
+      setError('email', { message: 'Invalid email' })
     }
-  };
+  }
 
   return (
     <div className="user-auth-forms">
@@ -69,7 +69,7 @@ const ResetPassword = (): JSX.Element => {
         />
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default ResetPassword;
+export default ResetPassword
