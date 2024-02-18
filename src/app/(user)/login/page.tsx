@@ -36,12 +36,29 @@ const Login = (): JSX.Element => {
   const onSubmit: SubmitHandler<LoginInput> = async data => {
     try {
       console.log('Submit data:', data)
+      const { identifier: email, password } = data
+
+      fetch('http://localhost:4000/signin', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.message === 'Signin successful') {
+            console.log('SING IN SUCCES! Route to Portfolio.')
+          }
+          return data
+        })
+
       // const { data: authData } = await axios.post(
       //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
       //   data
       // )
       // setToken(authData);
-      router.replace('/portfolio')
+
+      // ? if auth route to portfolio
+      // router.replace('/portfolio')
     } catch (error: any) {
       setError('password', { message: 'Invalid credentials' })
     }
