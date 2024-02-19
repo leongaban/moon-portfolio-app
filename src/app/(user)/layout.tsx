@@ -4,7 +4,7 @@
 import { FC, ReactNode, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
-// import useAuth from '@/src/common/hooks/useAuth';
+import useAuth from '@/src/common/hooks/useAuth'
 
 import { MOON_PORTFOLIO } from '@/src/common/constants/copy'
 import Loading from '@/src/components/loading'
@@ -16,23 +16,23 @@ interface layoutProps {
 }
 
 const Layout: FC<layoutProps> = ({ children }) => {
-  // const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading } = useAuth()
   const router = useRouter()
   const pathName = usePathname()
   const isPrivacy = containsPrivacy(pathName)
   const containerClass = isPrivacy ? '' : 'lg:max-w-[360px] max-w-[400px]'
 
-  // useEffect(() => {
-  //   if (isAuthenticated && !loading) router.push('/');
-  // }, [isAuthenticated, loading]);
+  useEffect(() => {
+    if (isAuthenticated && !loading) router.push('/')
+  }, [isAuthenticated, loading])
 
-  // if (loading || isAuthenticated) {
-  //   return (
-  //     <main className="flex flex-col items-center justify-between p-10">
-  //       <Loading />
-  //     </main>
-  //   );
-  // }
+  if (loading || isAuthenticated) {
+    return (
+      <main className="flex flex-col items-center justify-between p-10">
+        <Loading />
+      </main>
+    )
+  }
 
   return (
     <main className="flex flex-col items-center justify-between p-10">

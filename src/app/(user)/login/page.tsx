@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import axios from 'axios'
-// import { setToken } from '@/src/common/lib/auth'
+import { setToken } from '@/src/common/lib/auth'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@/src/components/buttons'
@@ -22,6 +22,7 @@ type LoginInput = {
   password: string
 }
 
+const signinRoute: string = process.env.NEXT_PUBLIC_SIGNIN_ROUTE || ''
 const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] })
 
 const Login = (): JSX.Element => {
@@ -36,29 +37,30 @@ const Login = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<LoginInput> = async data => {
     try {
-      console.log('Submit data:', data)
       const { identifier: email, password } = data
 
-      fetch('http://localhost:4000/signin', {
+      if (!signinRoute) {
+        throw new Error('Signin route is not defined')
+      }
+
+      const response = await fetch(signinRoute, {
         ...methodPost,
         body: JSON.stringify({ email, password }),
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.message === 'Signin successful') {
-            console.log('SING IN SUCCES! Route to Portfolio.')
-          }
-          return data
-        })
 
-      // const { data: authData } = await axios.post(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
-      //   data
-      // )
-      // setToken(authData);
+      if (!response.ok) {
+        throw new Error('Signin request failed')
+      }
 
-      // ? if auth route to portfolio
-      // router.replace('/portfolio')
+      const responseData = await response.json()
+
+      if (responseData && responseData.message === 'Sign in successful') {
+        console.log('SING IN SUCCES! Route to Portfolio.')
+        console.log(' ')
+        setToken(responseData)
+        // ? if auth route to portfolio
+        router.replace('/portfolio')
+      }
     } catch (error: any) {
       setError('password', { message: 'Invalid credentials' })
     }

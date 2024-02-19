@@ -12,12 +12,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const router = useRouter()
 
   useEffect(() => {
-    // console.log('isAuthenticated', isAuthenticated)
+    console.log('isAuthenticated', isAuthenticated)
     // console.log('loading', loading)
     if (!isAuthenticated && !loading) router.push('/')
   }, [isAuthenticated, loading])
 
-  if (loading || !isAuthenticated) {
+  // if (loading || !isAuthenticated) {
+  if (loading) {
     return (
       <main className="flex flex-col items-center justify-between p-10">
         <Loading />

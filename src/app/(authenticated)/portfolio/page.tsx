@@ -51,7 +51,7 @@ const page: FC<portfolioProps> = ({}) => {
 
         <div className="current-date">{currentDate}</div>
 
-        <Search />
+        {/* <Search /> */}
       </header>
 
       <div>

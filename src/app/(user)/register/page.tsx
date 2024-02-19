@@ -7,13 +7,13 @@ import Image from 'next/image'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
-// import { setToken } from '@/common/lib/auth';
+import { setToken } from '@/src/common/lib/auth'
 import {
   CREATE_ACCOUNT,
   CREATE_YOUR_ACCOUNT,
   SIGN_UP,
   SIGN_IN_EMAIL,
-  CONTINUE_GOOGLE,
+  // CONTINUE_GOOGLE,
 } from '@/src/common/constants/copy'
 import { methodPost } from '@/src/common/constants/api'
 import { Button } from '@/src/components/buttons'
@@ -27,6 +27,8 @@ type RegisterInput = {
   password: string
   confirmPassword: string
 }
+
+const registerRoute: string = process.env.NEXT_PUBLIC_REGISTER_ROUTE || ''
 
 const Register: FC<pageProps> = ({}) => {
   const {
@@ -47,20 +49,25 @@ const Register: FC<pageProps> = ({}) => {
     }
 
     try {
-      console.log('Register data:', data)
       const { name, email, password } = data
 
-      fetch('http://localhost:4000/register', {
+      const response = await fetch(registerRoute, {
         ...methodPost,
         body: JSON.stringify({ name, email, password }),
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.message === 'Register successful') {
-            console.log('REGISTER SUCCES! Route to Portfolio.')
-          }
-          return data
-        })
+
+      if (!response.ok) {
+        throw new Error('Signin request failed')
+      }
+
+      const responseData = await response.json()
+
+      if (responseData && responseData.message === 'Sign up successful') {
+        console.log('SIGN UP SUCCES! Route to Login & Display Success Alert!')
+        console.log(' ')
+        // setToken(responseData) // TODO do we need to save token here?
+        router.replace('/login')
+      }
 
       // const { data: authData } = await axios.post(
       //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local/register`,

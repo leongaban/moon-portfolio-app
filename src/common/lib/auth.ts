@@ -4,7 +4,6 @@ import { fetcher } from './api'
 
 interface User {
   id: number
-  username: string
   email: string
   provider: string
   confirmed: boolean
@@ -22,11 +21,12 @@ interface GoogleTokenData {
 }
 
 export const setToken = (data: TokenData) => {
+  console.log('auth setToken data:', data)
   if (typeof window === 'undefined') {
     return
   }
   Cookies.set('id', `${data.user.id}`)
-  Cookies.set('username', data.user.username)
+  Cookies.set('email', data.user.email)
   Cookies.set('token', data.jwt)
 }
 
@@ -35,7 +35,7 @@ export const setGoogleToken = (data: GoogleTokenData) => {
     return
   }
   Cookies.set('id', `${data.user.id}`)
-  Cookies.set('username', data.user.username)
+  Cookies.set('email', data.user.email)
   Cookies.set('token', data.token)
 }
 
@@ -45,7 +45,7 @@ export const unsetToken = () => {
   }
   Cookies.remove('id')
   Cookies.remove('token')
-  Cookies.remove('username')
+  Cookies.remove('email')
 }
 
 export const getUserFromLocalCookie = () => {
@@ -58,7 +58,7 @@ export const getUserFromLocalCookie = () => {
       },
     })
       .then(data => {
-        return data.username
+        return data.email
       })
       .catch(error => console.error(error))
   } else {
@@ -66,21 +66,21 @@ export const getUserFromLocalCookie = () => {
   }
 }
 
-export const getIdFromLocalCookie = () => {
-  const jwt = getTokenFromLocalCookie()
-  if (jwt) {
-    return fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwt}`,
-      },
-    }).then(data => {
-      return data.id
-    })
-  } else {
-    return
-  }
-}
+// export const getIdFromLocalCookie = () => {
+//   const jwt = getTokenFromLocalCookie()
+//   if (jwt) {
+//     return fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${jwt}`,
+//       },
+//     }).then(data => {
+//       return data.email
+//     })
+//   } else {
+//     return
+//   }
+// }
 
 export const getTokenFromLocalCookie = () => {
   return Cookies.get('token')
