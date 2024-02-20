@@ -3,10 +3,10 @@ import { Reducer, combineReducers } from 'redux'
 import { createWrapper } from 'next-redux-wrapper'
 import { persistStore, persistReducer } from 'redux-persist'
 
-import cryptoSlice from './slices/cryptoSlice'
+import cryptoReducer from './slices/cryptoSlice'
 
 const reducer = combineReducers({
-  crypto: cryptoSlice,
+  crypto: cryptoReducer,
 })
 
 const makeConfiguredStore = (reducer: Reducer) =>
@@ -16,6 +16,7 @@ const makeConfiguredStore = (reducer: Reducer) =>
       getDefaultMiddleware({
         serializableCheck: false,
       }),
+    devTools: process.env.NEXT_PUBLIC_NODE_ENV !== 'production',
   })
 
 const makeStore = () => {
