@@ -1,6 +1,12 @@
 {
   "name": "moon-portfolio-app",
   "version": "0.1.0",
+  "author": "Leon Gaban <leongaban@gmail.com> (http://leongaban.dev)",
+  "description": "Moon Portfolio - A cryptocurrency portfolio app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leongaban/moon-portfolio-app"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
