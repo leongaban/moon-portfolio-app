@@ -2,10 +2,10 @@
 
 import { FC, useEffect, useState } from 'react'
 import { Poppins } from 'next/font/google'
-// import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
-// import useAuth from '@/common/hooks/useAuth';
+import useAuth from '@/src/common/hooks/useAuth'
 import {
   MOON_PORTFOLIO,
   TAG_LINE,
@@ -14,7 +14,7 @@ import {
 } from '@/src/common/constants/copy'
 import { Button } from '@/src/components/buttons'
 import Logo from '@/src/components/logo'
-// import Loading from '@/components/loading';
+import Loading from '@/src/components/loading'
 // import useGoogleAuth from '@/common/hooks/useGoogleAuth';
 // import axios from 'axios';
 // import { setGoogleToken } from '@/common/lib/auth';
@@ -24,30 +24,30 @@ interface pageProps {}
 const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] })
 
 const Page: FC<pageProps> = ({}) => {
-  // const { loading, isAuthenticated } = useAuth();
-  // const router = useRouter();
-  // const searchParams = useSearchParams();
-  // const code = searchParams?.get('code');
-  // const { login, loading: loadingGoogle } = useGoogleAuth();
-  // const [authenticatingGoogle, setAuthenticatingGoogle] = useState(false);
+  const { loading, isAuthenticated } = useAuth()
+  const router = useRouter()
+  // const searchParams = useSearchParams()
+  // const code = searchParams?.get('code')
+  // const { login, loading: loadingGoogle } = useGoogleAuth()
+  const [authenticatingGoogle, setAuthenticatingGoogle] = useState(false)
 
   // useEffect(() => {
   //   if (code && !authenticatingGoogle && !isAuthenticated) {
-  //     authenticateViaGoogle(code);
+  //     authenticateViaGoogle(code)
   //   }
-  // }, [code, authenticatingGoogle, isAuthenticated]);
+  // }, [code, authenticatingGoogle, isAuthenticated])
 
-  // useEffect(() => {
-  //   if (isAuthenticated && !loading) router.push('/portfolio');
-  // }, [isAuthenticated, loading]);
+  useEffect(() => {
+    if (isAuthenticated && !loading) router.push('/portfolio')
+  }, [isAuthenticated, loading])
 
-  // if (loading || isAuthenticated || authenticatingGoogle) {
-  //   return (
-  //     <main className="flex flex-col items-center justify-between p-10">
-  //       <Loading />
-  //     </main>
-  //   );
-  // }
+  if (loading || isAuthenticated || authenticatingGoogle) {
+    return (
+      <main className="flex flex-col items-center justify-between p-10">
+        <Loading />
+      </main>
+    )
+  }
 
   return (
     <main className="flex flex-col items-center justify-between p-10">

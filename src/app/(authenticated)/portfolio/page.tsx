@@ -1,6 +1,7 @@
 'use client'
 
 import { FC, useEffect, useState } from 'react'
+import { Poppins } from 'next/font/google'
 
 import CoinBlock from '@/src/components/coin-block'
 import CurrencySwitch from '@/src/components/currency-switch'
@@ -24,6 +25,8 @@ interface Coin {
   position: number
 }
 
+const poppins = Poppins({ weight: '500', style: 'normal', subsets: ['latin'] })
+
 const page: FC<portfolioProps> = ({}) => {
   const [searchText, setInputResult] = useState('')
   const [toggleType, setToggleType] = useState('grid')
@@ -38,7 +41,7 @@ const page: FC<portfolioProps> = ({}) => {
   const currentDate = formatDate()
 
   return (
-    <div className="portfolio-container">
+    <div className={`portfolio-container ${poppins.className}`}>
       <Overlay searching={searchText} clickHandler={handleOverlayClick} />
 
       <header>
@@ -51,7 +54,7 @@ const page: FC<portfolioProps> = ({}) => {
 
         <div className="current-date">{currentDate}</div>
 
-        {/* <Search /> */}
+        <Search />
       </header>
 
       <div>

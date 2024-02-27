@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import axios from 'axios'
+// import axios from 'axios' // TODO remove axios code
 import { setToken } from '@/src/common/lib/auth'
 import { useRouter } from 'next/navigation'
 
